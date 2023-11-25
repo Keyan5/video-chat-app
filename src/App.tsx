@@ -92,9 +92,9 @@ function App() {
       <video
         className="w-3/4 h-[90%] rounded m-4"
         ref={remoteVideo}
-        poster="https://tavistockdental.co.uk/wp-content/uploads/2017/11/placeholder-f.jpg"
+        poster="https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg"
       />
-      <div className="flex flex-col gap-2 m-4 justify-around h-full">
+      <div className="flex flex-col justify-around h-full gap-2 m-4">
         <div className="flex flex-col gap-2 m-4">
           <h4
             className="text-xl font-bold text-center cursor-pointer"
@@ -116,25 +116,25 @@ function App() {
             id="idInput"
             type="text"
             onClick={handlePasteId}
-            className="focus:outline-none border border-gray-500 h-10 leading-10 rounded "
+            className="h-10 leading-10 border border-gray-500 rounded focus:outline-none "
           />
           <button
             type="button"
             onClick={() => handleCall(idInput.current?.value ?? "")}
-            className="bg-green-500 hover:bg-green-600 rounded text-white h-10"
+            className="h-10 text-white bg-green-500 rounded hover:bg-green-600"
           >
             Call
           </button>
           <button
             type="button"
-            className="bg-red-500 hover:bg-red-600 rounded text-white h-10"
+            className="h-10 text-white bg-red-500 rounded hover:bg-red-600"
             onClick={handleHangup}
           >
             Hang up
           </button>
         </div>
         <video
-          className="h-64 rounded m-2"
+          className="h-64 m-2 rounded"
           ref={selfVideo}
           poster="https://3.bp.blogspot.com/_Xmev_6exX3I/TCSWXv1O_cI/AAAAAAAAAIA/8y-0mCTDvTo/s1600/YOU.jpg"
         />
