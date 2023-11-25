@@ -25,19 +25,17 @@ function App() {
           audio: true,
         })
         .then((selfStream) => {
-          if (selfVideo.current) {
-            selfVideo.current.srcObject = selfStream;
-            selfVideo.current.play();
-          }
+          if (selfVideo.current) selfVideo.current.srcObject = selfStream;
 
           call.answer(selfStream);
 
           call.on("stream", (remoteStream) => {
-            if (remoteVideo.current) {
+            if (remoteVideo.current)
               remoteVideo.current.srcObject = remoteStream;
-              remoteVideo.current.play();
-            }
           });
+        })
+        .catch((error) => {
+          console.error("Error accessing media devices.", error);
         });
     });
   }, []);
@@ -60,22 +58,14 @@ function App() {
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
       .then((selfStream) => {
-        if (selfVideo.current) {
-          selfVideo.current.srcObject = selfStream;
-          selfVideo.current.play();
-        }
+        if (selfVideo.current) selfVideo.current.srcObject = selfStream;
 
         const call = selfPeer.current?.call(id, selfStream);
-
-        console.log(call);
 
         call?.on("stream", (remoteStream) => {
           console.log(remoteStream);
 
-          if (remoteVideo.current) {
-            remoteVideo.current.srcObject = remoteStream;
-            remoteVideo.current.play();
-          }
+          if (remoteVideo.current) remoteVideo.current.srcObject = remoteStream;
         });
       })
       .catch((error) => {
@@ -92,7 +82,8 @@ function App() {
       <video
         className="w-3/4 h-[90%] rounded m-4"
         ref={remoteVideo}
-        poster="https://static.vecteezy.com/system/resources/thumbnails/000/439/863/small/Basic_Ui__28186_29.jpg"
+        autoPlay
+        poster="https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-PNG-Free-Image.png"
       />
       <div className="flex flex-col justify-around h-full gap-2 m-4">
         <div className="flex flex-col gap-2 m-4">
@@ -136,6 +127,7 @@ function App() {
         <video
           className="h-64 m-2 rounded"
           ref={selfVideo}
+          autoPlay
           poster="https://3.bp.blogspot.com/_Xmev_6exX3I/TCSWXv1O_cI/AAAAAAAAAIA/8y-0mCTDvTo/s1600/YOU.jpg"
         />
       </div>
