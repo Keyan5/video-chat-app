@@ -127,6 +127,7 @@ function App() {
         <video
           className="h-64 m-2 rounded"
           ref={selfVideo}
+          muted
           autoPlay
           poster="https://3.bp.blogspot.com/_Xmev_6exX3I/TCSWXv1O_cI/AAAAAAAAAIA/8y-0mCTDvTo/s1600/YOU.jpg"
         />
